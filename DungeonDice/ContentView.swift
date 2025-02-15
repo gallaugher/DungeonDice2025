@@ -41,39 +41,14 @@ struct ContentView: View {
             
             Spacer()
             
-            Group {
-                HStack {
-                    Button("\(Dice.four.rawValue)-sided") {
-                        resultMessage = "You rolled a \(Dice.four.roll()) on a \(Dice.four)-sided dice"
-                    }
-                    Spacer()
-                    Button("\(Dice.six.rawValue)-sided") {
-                        resultMessage = "You rolled a \(Dice.six.roll()) on a \(Dice.six)-sided dice"
-                    }
-                    Spacer()
-                    Button("\(Dice.eight.rawValue)-sided") {
-                        resultMessage = "You rolled a \(Dice.eight.roll()) on a \(Dice.eight)-sided dice"
-                    }
+
+            ForEach(Dice.allCases, id: \.self) { dice in
+                Button("\(dice.rawValue)-sided") {
+                    resultMessage = "You rolled a \(dice.roll()) on a \(dice)-sided dice"
                 }
-                HStack {
-                    Button("\(Dice.ten.rawValue)-sided") {
-                        resultMessage = "You rolled a \(Dice.ten.roll()) on a \(Dice.four)-sided dice"
-                    }
-                    Spacer()
-                    Button("\(Dice.twelve.rawValue)-sided") {
-                        resultMessage = "You rolled a \(Dice.twelve.roll()) on a \(Dice.twelve)-sided dice"
-                    }
-                    Spacer()
-                    Button("\(Dice.twenty.rawValue)-sided") {
-                        resultMessage = "You rolled a \(Dice.twenty.roll()) on a \(Dice.twenty)-sided dice"
-                    }
-                }
-                Button("\(Dice.hundred.rawValue)-sided") {
-                    resultMessage = "You rolled a \(Dice.hundred.roll()) on a \(Dice.hundred)-sided dice"
-                }
+                .buttonStyle(.borderedProminent)
+                .tint(.red)
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.red)
         }
         .padding()
     }
